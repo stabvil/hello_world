@@ -1,15 +1,19 @@
 package main
 
 import (
-    "fmt"
-    "io/ioutil"
+    
+	"github.com/gorilla/mux"
 )
 
 func main() {
-    bs, err := ioutil.ReadFile("README.md")
-    if err != nil {
-        return
-    }
-    str := string(bs)
-    fmt.Println(str)
+	r := mux.NewRouter()
+	// Only matches if domain is "www.example.com".
+	r.Host("www.example.com")
+	// Matches a dynamic subdomain.
+	
+    /*r := mux.NewRouter()
+    r.HandleFunc("/", HomeHandler)
+    r.HandleFunc("/products", ProductsHandler)
+    r.HandleFunc("/articles", ArticlesHandler)
+    http.Handle("/", r)*/
 }
